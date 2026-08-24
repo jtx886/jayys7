@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# PHP设置
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 60
+
+# 防止直接访问敏感文件
+<FilesMatch "\.(sql|log|ini)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 默认首页
+DirectoryIndex index.php install.php
+
+# 错误页面
+ErrorDocument 404 /index.php
